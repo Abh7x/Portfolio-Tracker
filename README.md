@@ -40,23 +40,17 @@ Requirements & Installation
 Python 3.8+ (recommended)
 
 Install required packages:
-
-bash
-Copy
-Edit
 pip install sqlalchemy streamlit yfinance requests matplotlib plotly
 (Optional) If you want to receive email alerts, set up environment variables:
 
 EMAIL_ADDRESS: Your SMTP email address (e.g., Gmail)
 EMAIL_PASSWORD: The App Password for Gmail (or equivalent for other providers)
+
 Usage
 1. Initialize & Populate the Database
 Run the main Python script to create portfolio.db (SQLite) and insert demo data:
-
-bash
-Copy
-Edit
 python portfolio_tracker.py
+
 What this does:
 
 Creates tables for users, symbols, transactions, alerts, and historical_rates.
@@ -66,10 +60,6 @@ Adds transactions and alerts for the demo user.
 Fetches current prices & checks alerts once.
 2. Run the Dashboard
 Then launch the Streamlit dashboard:
-
-bash
-Copy
-Edit
 streamlit run dashboard.py
 Open the provided URL (typically http://localhost:8501/) in your web browser. In the dashboard, you can:
 
@@ -77,15 +67,14 @@ Select the user (e.g., demo).
 View holdings (net quantities) and cost basis.
 See current prices fetched live from yfinance, CoinGecko, or advanced forex rate logic.
 Plot historical charts for stocks, crypto, and forex pairs over the last 30 days.
+
 Files & Structure
-bash
-Copy
-Edit
 .
 ├── portfolio_tracker.py   # Main application logic (DB models, advanced forex, alerts, etc.)
 ├── dashboard.py           # Streamlit dashboard
 ├── README.md              # Project overview & usage instructions
 └── portfolio.db           # Created after running portfolio_tracker.py (SQLite file)
+
 portfolio_tracker.py
 SQLAlchemy Models: Defines User, Symbol, Transaction, Alert, HistoricalRate.
 Initialization: Creates the SQLite database tables if they don’t exist.
@@ -98,6 +87,7 @@ Alerts: Checks if the latest prices cross thresholds, then sends an email.
 dashboard.py
 A Streamlit web interface for exploring user holdings, cost basis, and retrieving historical charts from external APIs.
 Allows you to select a user, see holdings, cost basis, and plot the last 30 days of price/rate data.
+
 Configuration & API Keys
 Email Alerts:
 
@@ -108,6 +98,7 @@ In portfolio_tracker.py, the PROVIDER_CONFIG dictionary has placeholders:
 python
 Copy
 Edit
+
 "EXCHANGERATE_API": {
   "url": "https://v6.exchangerate-api.com/v6/YOUR_API_KEY/latest/",
   "weight": 0.8,
@@ -117,6 +108,7 @@ Edit
   "weight": 0.9,
 },
 Replace YOUR_API_KEY and YOUR_APP_ID with your real keys (or store them in environment variables).
+
 Next Steps & Improvements
 User Authentication:
 
